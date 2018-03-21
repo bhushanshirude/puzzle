@@ -1,0 +1,65 @@
+<!Doctype html>
+<html ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Puzzle</title>
+    <link rel="stylesheet" href="css/Bootstrap.min.css">
+    <link rel="stylesheet" href="css/toastr.min.css">
+    <link rel="stylesheet" href="js/jquery-ui.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/ui-router.min.js"></script>
+    <script src="Controller/controller.js"></script>
+    <script src="js/ngDragToReorder.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/toastr.min.js"></script>
+</head>
+<style>
+    .form {
+        width: 300px;
+        margin: 30px 0px 0px 500px;
+    }
+    
+    .card {
+        height: 50px;
+        margin: 20px 20px 10px 20px;
+    }
+    
+    .card-body {
+        text-align: center;
+        margin-top: -10px;
+        cursor: move val !important;
+    }
+    
+    .row p {
+        width: 30px;
+        cursor: move !important;
+    }
+</style>
+
+<body style="background-color:#0f4254" ng-controller="forCtrl">
+    <h2 style="color:white; margin-left:400px; margin-top:20px;">
+        Welcome To Puzzle Prove Yourself...
+    </h2>
+    <div class="form" name="myForm">
+        <input type="number" name="myField" class="form-control" ng-model="value" min="1" max="100" ng-change="MyChange()" placeholder="Enter the Number">
+    </div>
+
+    <div class="mySuccess mt-2">
+        <h4>{{Success}}</h4>
+    </div>
+    <div class="row offset-3" id="sortable" drag-to-reorder="array">
+        <div class="card" ng-repeat="val in array track by $index" ng-if="value" ng-switch on="$index % $scope.array" ng-drag="true" dtr-draggable>
+            <div class=" rows ">
+                <div class="card-body ">
+                    <p>{{val}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
